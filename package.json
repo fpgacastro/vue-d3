@@ -1,0 +1,21 @@
+{
+  "name": "vue-project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-sigma/layout-forceatlas2": "^3.3.0",
+    "3d-force-graph": "^1.71.2",
+    "d3": "^7.8.2",
+    "graphology": "^0.25.1",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.1.4"
+  }
+}
