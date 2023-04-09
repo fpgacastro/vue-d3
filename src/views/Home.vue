@@ -1,5 +1,8 @@
 <template>
-  <div>{{ text }}</div>
+  <div>
+  <img src="./image.jpg" alt="封面图片" style="width: 90%; height: auto;">
+  <!-- <img src="./校园网络拓扑.jfif" alt="封面图片" style="width: 90%; height: auto;"> -->
+  </div>
 </template>
 
 <script>

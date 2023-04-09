@@ -544,7 +544,8 @@ export default {
       isLayoutRunning: false,
       A: null,
       newdata: null,
-      buttons: ['orient', 'loop', 'star', 'forceatlas2', 'fruchterman', 'test'],
+      buttons: ['loop', 'star', 'fruchterman', 'test'],
+      // buttons: ['orient', 'loop', 'star', 'forceatlas2', 'fruchterman', 'test'],
     //   treeData : {
     //   "nodes": [
     //     {"id": 1, "name": "Level 1 Node 1", "color": "#00ffff", "level": "1", "size": "30"},
@@ -692,45 +693,47 @@ export default {
     if (buttonValue === 'orient') {
         this.A = this.treeData;
       } else if (buttonValue === 'loop') {
-        // const numNodes = 100; // 节点数量
-        // const radius = 100; // 半径
-        // this.A = generateCircularLayoutData(numNodes, radius); // 生成数据
+        const numNodes = 30; // 节点数量
+        const radius = 100; // 半径
+        this.A = generateCircularLayoutData(numNodes, radius); // 生成数据
         
-        const newdata = this.treeData;
-        const simulation = d3.forceSimulation(newdata.nodes)
-          // .force("link", d3.forceLink(newdata.links).id(d => d.id))
-          // .force("charge", d3.forceManyBody().strength(-300))
-          .force("atlas", forceAtlas2Improve(newdata.nodes, newdata.links))
-          // .force("center", d3.forceCenter());
-          simulation.on("tick", () => {
-          this.A = newdata;
-        });
+        // const newdata = this.treeData;
+        // const simulation = d3.forceSimulation(newdata.nodes)
+        //   // .force("link", d3.forceLink(newdata.links).id(d => d.id))
+        //   // .force("charge", d3.forceManyBody().strength(-300))
+        //   .force("atlas", forceAtlas2Improve(newdata.nodes, newdata.links))
+        //   // .force("center", d3.forceCenter());
+        //   simulation.on("tick", () => {
+        //   this.A = newdata;
+        // });
 
       } else if (buttonValue === 'star') {
-        // const numNodes = 100; // 节点数量
-        // const radius = 100; // 半径
-        // this.A = generateStarLayoutData(numNodes, radius); // 生成数据
+        const numNodes = 30; // 节点数量
+        const radius = 100; // 半径
+        this.A = generateStarLayoutData(numNodes, radius); // 生成数据
         
-        const width = this.$refs.graphContainer.clientWidth;
-        const height = this.$refs.graphContainer.clientHeight;
+        // const width = this.$refs.graphContainer.clientWidth;
+        // const height = this.$refs.graphContainer.clientHeight;
 
-        const newdata = this.treeData;
-        const simulation = d3force3d.forceSimulation(newdata.nodes)
-          // .force("link", d3.forceLink(newdata.links).id(d => d.id))
-          .force("charge", d3force3d.forceManyBody().strength(-300))
-          .force("center", d3force3d.forceCenter())
-          .force("atlas", forceAtlas2New(newdata.nodes, newdata.links, width, height));
-          simulation.on("tick", () => {
-          newdata.nodes.forEach((node, index) => {
-            node.x = newdata.nodes[index].x;
-            node.y = newdata.nodes[index].y;
-            node.z = newdata.nodes[index].z;
-          });
-          this.A = newdata;
-        });
+        // const newdata = this.treeData;
+        // const simulation = d3force3d.forceSimulation(newdata.nodes)
+        //   // .force("link", d3.forceLink(newdata.links).id(d => d.id))
+        //   .force("charge", d3force3d.forceManyBody().strength(-300))
+        //   .force("center", d3force3d.forceCenter())
+        //   .force("atlas", forceAtlas2New(newdata.nodes, newdata.links, width, height));
+        //   simulation.on("tick", () => {
+        //   newdata.nodes.forEach((node, index) => {
+        //     node.x = newdata.nodes[index].x;
+        //     node.y = newdata.nodes[index].y;
+        //     node.z = newdata.nodes[index].z;
+        //   });
+        //   this.A = newdata;
+        // });
 
-      } else if (buttonValue === 'forceatlas2') {
+      } else if (buttonValue === 'fruchterman') {
+      // } else if (buttonValue === 'forceatlas2') {
         const newdata = this.treeData;
+        this.A = null;
         const simulation = d3force3d.forceSimulation(newdata.nodes)
           // .force("link", d3.forceLink(newdata.links).id(d => d.id))
           // .force("charge", d3.forceManyBody().strength(-300))
@@ -745,7 +748,8 @@ export default {
           });
           this.A = newdata;
         });
-      } else if (buttonValue === 'fruchterman') {
+      } else if (buttonValue === 'test') {
+      // } else if (buttonValue === 'fruchterman') {
         const newdata = this.treeData;
         const simulation = d3force3d.forceSimulation()
           .force('link', d3force3d.forceLink().id(d => d.id))
@@ -760,7 +764,8 @@ export default {
           this.graph.graphData(newdata);
           simulation.stop();
         });
-      } else if (buttonValue === 'test') {
+      } else if (buttonValue === 'forceatlas2') {
+      // } else if (buttonValue === 'test') {
         const rows = 6; // 行数
         const columns = 6; // 列数
         const distance = 50; // 节点间距
